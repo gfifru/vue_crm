@@ -7,7 +7,7 @@
         >
           <i class="material-icons black-text">dehaze</i>
         </a>
-        <span class="black-text">12.12.12</span>
+        <span class="black-text">{{ date | date('datetime') }}</span>
       </div>
 
       <ul class="right hide-on-small-and-down">
@@ -16,6 +16,7 @@
               class="dropdown-trigger black-text"
               href="#"
               data-target="dropdown"
+              ref="dropdown"
           >
             USER NAME
             <i class="material-icons right">arrow_drop_down</i>
@@ -23,26 +24,56 @@
 
           <ul id='dropdown' class='dropdown-content'>
             <li>
-              <a href="#" class="black-text">
+              <router-link to="/profile" class="black-text">
                 <i class="material-icons">account_circle</i>Профиль
-              </a>
+              </router-link>
             </li>
             <li class="divider" tabindex="-1"></li>
             <li>
-              <a href="#" class="black-text">
+              <a class="black-text" @click.prevent="logout">
                 <i class="material-icons">assignment_return</i>Выйти
               </a>
             </li>
           </ul>
         </li>
       </ul>
+
     </div>
   </nav>
 </template>
 
 <script>
+import M from 'materialize-css'
+
 export default {
-  name: "Navbar"
+  data: () => ({
+    date: new Date(),
+    interval: null,
+    dropdown: null
+  }),
+  methods: {
+    logout() {
+      console.log('Logout')
+      this.$router.push('/login?message=logout')
+    }
+  },
+  // работает после полной загрузки DOM-дерева
+  mounted() {
+    this.interval = setInterval(() => {
+      this.date = new Date()
+    }, 1000)
+    // console.log(this.$refs.dropdown)
+    this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
+      constrainWidth: true,
+      inDuration: 500
+    })
+  },
+  beforeDestroy() {
+    clearInterval(this.interval)
+    if (this.dropdown && this.dropdown.destroy) {
+      this.dropdown.destroy
+    }
+  }
 }
 </script>
 
