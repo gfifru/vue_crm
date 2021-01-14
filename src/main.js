@@ -4,10 +4,14 @@ import Vuelidate from 'vuelidate'
 import router from './router'
 import store from './store'
 import dateFilter from '@/filters/date.filter'
+import messagePlugin from '@/utils/message.plugin'
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
 
 Vue.config.productionTip = false
+
+// импорт messagePlugin
+Vue.use(messagePlugin)
 
 // импорт Vuelidate
 Vue.use(Vuelidate)
