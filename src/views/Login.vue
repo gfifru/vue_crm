@@ -57,6 +57,7 @@
 </template>
 
 <script>
+/* eslint-disable no-empty */
 import {email, required, minLength} from 'vuelidate/lib/validators'
 import messages from "@/utils/messages"
 
@@ -89,13 +90,13 @@ export default {
 
       try {
         await this.$store.dispatch('login', formData)
-        this.$router.push('/')
-      } catch (e) {
-        console.log(e)
-      }
+        await this.$router.push('/')
+      } catch (e) {}
     }
   }
 }
+/* eslint-disable no-empty */
+
 </script>
 
 <style scoped>
