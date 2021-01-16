@@ -4,6 +4,7 @@ import Vuelidate from 'vuelidate'
 import router from './router'
 import store from './store'
 import dateFilter from '@/filters/date.filter'
+import currencyFilter from '@/filters/currency.filter'
 import messagePlugin from '@/utils/message.plugin'
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
@@ -11,6 +12,8 @@ import 'materialize-css/dist/js/materialize.min'
 import firebase from 'firebase'
 import 'firebase/auth'
 import 'firebase/database'
+
+import Loader from '@/components/app/Loader'
 
 Vue.config.productionTip = false
 
@@ -22,6 +25,10 @@ Vue.use(Vuelidate)
 
 // импорт фильтров во vue
 Vue.filter('date', dateFilter)
+Vue.filter('currency', currencyFilter)
+
+// импорт компонентов во vue глобально
+Vue.component('Loader', Loader)
 
 
 firebase.initializeApp({

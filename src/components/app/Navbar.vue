@@ -18,7 +18,7 @@
               data-target="dropdown"
               ref="dropdown"
           >
-            USER NAME
+            {{ name }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -55,6 +55,11 @@ export default {
     async logout() {
       await this.$store.dispatch('logout')
       this.$router.push('/login?message=logout')
+    }
+  },
+  computed: {
+    name() {
+      return this.$store.getters.info.name
     }
   },
   // работает после полной загрузки DOM-дерева
