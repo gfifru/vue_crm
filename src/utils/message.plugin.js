@@ -1,7 +1,7 @@
 import M from 'materialize-css'
 /* eslint-disable no-unused-vars */
 export default {
-  install(Vue, option) {
+  install(Vue) {
     Vue.prototype.$message = function (html) {
       M.toast({html})
     }

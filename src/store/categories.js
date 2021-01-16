@@ -1,0 +1,21 @@
+import firebase from 'firebase'
+
+export default {
+  actions: {
+    async createCategory({commit, dispatch}, {title, limit}) {
+      try {
+        const uid = await dispatch('getUid') // получаем id пользователя из метода getUid
+        // создаем категорию в базе у данного пользователя
+        // добавляем поля title / limit
+        const category = await firebase
+            .database()
+            .ref(`/users/${uid}/categories`)
+            .push({title, limit})
+        return {title, limit, id: category.key}
+      } catch (e) {
+        commit('setError', e)
+        throw e
+      }
+    }
+  }
+}
