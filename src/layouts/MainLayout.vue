@@ -24,10 +24,11 @@
 </template>
 
 <script>
-import Navbar from "@/components/app/Navbar"
-import Sidenav from "@/components/app/Sidenav"
+import Navbar from '@/components/app/Navbar'
+import Sidenav from '@/components/app/Sidenav'
+import messages from '@/utils/messages'
 
-export default {
+export default{
   data: () => ({
     isOpen: true,
     loading: true
@@ -40,6 +41,16 @@ export default {
   },
   components: {
     Navbar, Sidenav
+  },
+  computed: {
+    error() {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error(fbError) {
+      this.$error(messages[fbError.code] || 'Что-то пошло не так!')
+    }
   }
 }
 </script>
