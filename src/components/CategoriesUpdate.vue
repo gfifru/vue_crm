@@ -119,7 +119,7 @@ export default {
   },
   mounted() {
     this.select = M.FormSelect.init(this.$refs.select);
-    M.updateTextFields() // placeholder уходит вверх при значении по умолчанию (limit)
+    M.updateTextFields() // placeholder уходит вверх при значении по умолчанию
   },
   destroyed() {
     if (this.select && this.select.destroy) {
