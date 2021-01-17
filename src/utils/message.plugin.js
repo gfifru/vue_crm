@@ -1,5 +1,5 @@
 import M from 'materialize-css'
-/* eslint-disable no-unused-vars */
+
 export default {
   install(Vue) {
     Vue.prototype.$message = function (html) {
@@ -10,4 +10,3 @@ export default {
     }
   }
 }
-/* eslint-disable no-unused-vars */
