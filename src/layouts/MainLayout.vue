@@ -5,7 +5,7 @@
 
       <navbar @click="isOpen = !isOpen"/>
 
-      <sidenav v-model="isOpen"/>
+      <sidenav v-model="isOpen" :key="locale"/>
 
       <main class="app-content" :class="{full: !isOpen}">
         <div class="app-page">
@@ -43,6 +43,9 @@ export default{
     Navbar, Sidenav
   },
   computed: {
+    locale() {
+      return this.$store.getters.info.locale
+    },
     error() {
       return this.$store.getters.error
     }

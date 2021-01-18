@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import dateFilter from '@/filters/date.filter'
 import currencyFilter from '@/filters/currency.filter'
+import localizeFilter from '@/filters/localize.filter'
 import tooltipDirectives from '@/directives/tooltip.directives'
 import messagePlugin from '@/utils/message.plugin'
 import './registerServiceWorker'
@@ -28,6 +29,7 @@ Vue.use(Vuelidate)
 // импорт фильтров во vue
 Vue.filter('date', dateFilter)
 Vue.filter('currency', currencyFilter)
+Vue.filter('localize', localizeFilter)
 
 // импорт директив
 Vue.directive('tooltip', tooltipDirectives)
