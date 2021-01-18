@@ -9,6 +9,7 @@ import tooltipDirectives from '@/directives/tooltip.directives'
 import messagePlugin from '@/utils/message.plugin'
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
+import Paginate from 'vuejs-paginate'
 
 import firebase from 'firebase'
 import 'firebase/auth'
@@ -33,6 +34,9 @@ Vue.directive('tooltip', tooltipDirectives)
 
 // импорт компонентов во vue глобально
 Vue.component('Loader', Loader)
+
+// пагинация
+Vue.component('paginate', Paginate)
 
 
 firebase.initializeApp({
